@@ -10,20 +10,21 @@ import static com.example.validation.ValidationConstrains.*;
 public class RegisterRequest {
 
     @NotNull
-    @Size(min = USERNAME_SIZE_MIN, max = USERNAME_SIZE_MAX)
+    @Size(min = USERNAME_SIZE_MIN,max = USERNAME_SIZE_MAX)
     private String username;
 
     @NotNull
-    @Size(min = PASSWORD_SIZE_MIN, max = PASSWORD_SIZE_MAX)
+    @Size(min = PASSWORD_SIZE_MIN,max = PASSWORD_SIZE_MAX)
     private String password;
 
     @NotNull
-    @Size(min = PASSWORD_SIZE_MIN, max = PASSWORD_SIZE_MAX)
+    @Size(min = PASSWORD_SIZE_MIN,max = PASSWORD_SIZE_MAX)
     private String repeatedPassword;
 
     @NotNull
     @Email
     private String mail;
+
 
 
     public RegisterRequest() {

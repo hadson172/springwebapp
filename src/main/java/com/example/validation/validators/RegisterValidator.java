@@ -32,7 +32,7 @@ public class RegisterValidator implements Validator {
     public void validate(Object o, Errors errors) {
         RegisterRequest request = (RegisterRequest) o;
 
-        if (request.getRepeatedPassword().equals(request.getPassword())) {
+        if (!request.getRepeatedPassword().equals(request.getPassword())) {
             errors.rejectValue(ErrorField.REPEATED_PASSWORD.getField(), ErrorCode.PASSWORDS_NOT_MATCH.getCode(),
                     ErrorMessage.REPEATED_PASSWORD_DOES_NOT_MATCH_PASSWORD.getMessage());
         }
