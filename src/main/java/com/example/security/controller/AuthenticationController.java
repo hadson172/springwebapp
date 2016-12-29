@@ -4,6 +4,7 @@ import com.example.model.account.User;
 import com.example.model.account.role.Role;
 import com.example.security.request.RegisterRequest;
 import com.example.service.UserService;
+import com.example.validation.validators.RegisterValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,10 +22,13 @@ public class AuthenticationController {
     private UserService userService;
     private PasswordEncoder passwordEncoder;
 
+    private RegisterValidator registerValidator;
+
     @Autowired
-    public AuthenticationController(UserService userService, PasswordEncoder passwordEncoder) {
+    public AuthenticationController(UserService userService, PasswordEncoder passwordEncoder, RegisterValidator registerValidator) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
+        this.registerValidator = registerValidator;
     }
 
     @PostMapping("/register")
