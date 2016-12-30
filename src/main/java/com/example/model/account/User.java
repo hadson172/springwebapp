@@ -17,7 +17,8 @@ public class User {
     private String password;
     private String mail;
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
     private Set<Role> authorities;
     private boolean accountNonExpired;
     private boolean accountNonLocked;
