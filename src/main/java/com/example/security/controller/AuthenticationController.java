@@ -50,4 +50,5 @@ public class AuthenticationController {
         User user = new User(request.getUsername(), hashedPassword, request.getMail(), roles);
         userService.saveUser(user);
     }
+
 }

@@ -17,6 +17,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String API_PATH = "/api/**";
     private static final String AUTH_PATH = "/auth/**";
+
     private UserService userService;
 
     @Autowired
