@@ -3,6 +3,7 @@ package com.example.rest.request;
 import com.example.model.property.AbstractProperty;
 
 import javax.validation.constraints.NotNull;
+import java.time.Year;
 
 public class PropertyCreateRequest {
 
@@ -10,8 +11,8 @@ public class PropertyCreateRequest {
     private AbstractProperty.Type type;
 
     private double price;
-    private int age;
-    private double size;
+    private Year buildYear;
+    private double area;
 
     public PropertyCreateRequest() {
     }
@@ -24,11 +25,11 @@ public class PropertyCreateRequest {
         return price;
     }
 
-    public int getAge() {
-        return age;
+    public Year getBuildYear() {
+        return buildYear;
     }
 
-    public double getSize() {
-        return size;
+    public double getArea() {
+        return area;
     }
 }

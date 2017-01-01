@@ -21,4 +21,9 @@ public class ApplicationExceptionHandler {
         return ResponseEntity.badRequest().body(errors);
 
     }
+
+    @ExceptionHandler(value = ResourceNotFoundException.class)
+    public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException ex) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
+    }
 }

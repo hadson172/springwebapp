@@ -4,6 +4,8 @@ import com.example.model.account.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.Year;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -21,18 +23,21 @@ public abstract class AbstractProperty {
     private Type type;
 
     private double price;
-    private double size;
-    private int age;
+    private double area;
+    private Year buildYear;
+    private LocalDateTime creationTime;
 
     public AbstractProperty() {
+
     }
 
-    public AbstractProperty(User owner, Type type, double price, Double size, int age) {
+    public AbstractProperty(User owner, Type type, double price, double area, Year buildYear) {
         this.owner = owner;
         this.type = type;
         this.price = price;
-        this.size = size;
-        this.age = age;
+        this.area = area;
+        this.buildYear = buildYear;
+        creationTime = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -52,12 +57,16 @@ public abstract class AbstractProperty {
         return price;
     }
 
-    public double getSize() {
-        return size;
+    public double getArea() {
+        return area;
     }
 
-    public int getAge() {
-        return age;
+    public Year getBuildYear() {
+        return buildYear;
+    }
+
+    public LocalDateTime getCreationTime() {
+        return creationTime;
     }
 
     public enum Type {

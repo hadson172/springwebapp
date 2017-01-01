@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PropertyService {
@@ -23,5 +24,21 @@ public class PropertyService {
 
     public List<AbstractProperty> findAllPropertiesByOwner(String username) {
         return propertyRepository.findAllByOwnerUsername(username);
+    }
+
+    public Optional<AbstractProperty> findByOwnerUsernameAndId(String username, Long id) {
+        return propertyRepository.findByOwnerUsernameAndId(username, id);
+    }
+
+    public boolean isOwner(String username, Long id) {
+        return propertyRepository.findByOwnerUsernameAndId(username, id).isPresent();
+    }
+
+    public void deleteProperty(Long id) {
+        propertyRepository.delete(id);
+    }
+
+    public List<AbstractProperty> findAll() {
+        return propertyRepository.findAll();
     }
 }

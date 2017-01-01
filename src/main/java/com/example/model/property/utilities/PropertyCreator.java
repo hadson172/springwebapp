@@ -1,8 +1,13 @@
-package com.example.model.property;
+package com.example.model.property.utilities;
 
 import com.example.model.account.User;
+import com.example.model.property.AbstractProperty;
+import com.example.model.property.House;
+import com.example.model.property.Plot;
+import com.example.model.property.Warehouse;
 import org.springframework.stereotype.Component;
 
+import java.time.Year;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,14 +23,14 @@ public class PropertyCreator {
         map.put(AbstractProperty.Type.PLOT, Plot::new);
     }
 
-    public AbstractProperty createProperty(User owner, AbstractProperty.Type type, double price, double size, int age) {
-        return map.get(type).create(owner, price, size, age);
+    public AbstractProperty createProperty(User owner, AbstractProperty.Type type, double price, double area, Year buildYear) {
+        return map.get(type).create(owner, price, area, buildYear);
     }
 
 
     @FunctionalInterface
     private interface Creator {
-        AbstractProperty create(User owner, Double price, Double size, int age);
+        AbstractProperty create(User owner, double price, double area, Year buildYear);
     }
 
 }
