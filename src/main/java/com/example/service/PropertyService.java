@@ -41,4 +41,12 @@ public class PropertyService {
     public List<AbstractProperty> findAll() {
         return propertyRepository.findAll();
     }
+
+    public Optional<AbstractProperty> findPropertyById(Long id) {
+        return propertyRepository.findPropertyById(id);
+    }
+
+    public Optional<AbstractProperty> findAllByTypeAndId(AbstractProperty.Type type, Long id) {
+        return propertyRepository.findByTypeAndId(type, id);
+    }
 }

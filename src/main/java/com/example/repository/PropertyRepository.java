@@ -12,4 +12,8 @@ public interface PropertyRepository extends JpaRepository<AbstractProperty, Long
 
     Optional<AbstractProperty> findByOwnerUsernameAndId(String username, Long id);
 
+    Optional<AbstractProperty> findPropertyById(Long id);
+
+    Optional<AbstractProperty> findByTypeAndId(AbstractProperty.Type type, Long id);
+
 }

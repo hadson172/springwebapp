@@ -57,12 +57,24 @@ public abstract class AbstractProperty {
         return price;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public double getArea() {
         return area;
     }
 
+    public void setArea(double area) {
+        this.area = area;
+    }
+
     public Year getBuildYear() {
         return buildYear;
+    }
+
+    public void setBuildYear(Year buildYear) {
+        this.buildYear = buildYear;
     }
 
     public LocalDateTime getCreationTime() {

@@ -52,13 +52,6 @@ public class PropertyController {
         return propertyService.findAllPropertiesByOwner(authentication.getName());
     }
 
-    @GetMapping("/search")
-    @ResponseStatus(HttpStatus.OK)
-    public List<AbstractProperty> getAllProperty() {
-        return propertyService.findAll();
-    }
-
-
     @DeleteMapping("/{propertyId}")
     @PreAuthorize("hasPermission(#propertyId,'AbstractProperty','delete')")
     @ResponseStatus(HttpStatus.OK)
