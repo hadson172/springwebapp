@@ -10,12 +10,10 @@ import com.example.rest.request.UpdateWarehouseRequest;
 import com.example.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("${path.update}")
+@RestController
+@RequestMapping("${path.update}")
 public class UpdatePropertyController {
 
     private PropertyService propertyService;
@@ -25,12 +23,13 @@ public class UpdatePropertyController {
         this.propertyService = propertyService;
     }
 
-    @PostMapping("{id}")
-    @PreAuthorize("hasPermission(#id,'AbstractProperty','delete')")
+    @PostMapping("/{id}")
+    @PreAuthorize("hasPermission(#id,'AbstractProperty','update')")
     public void updateProperty(@PathVariable Long id, @RequestBody UpdatePropertyRequest request) {
 
         AbstractProperty abstractProperty = propertyService.findPropertyById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Property not found"));
+
 
         abstractProperty.setArea(request.getArea());
         abstractProperty.setBuildYear(request.getBuildYear());
@@ -41,7 +40,7 @@ public class UpdatePropertyController {
     }
 
     @PostMapping("/house/{id}")
-    @PreAuthorize("hasPermission(#id,'AbstractProperty','delete')")
+    @PreAuthorize("hasPermission(#id,'AbstractProperty','update')")
     public void updateHouse(@PathVariable Long id, @RequestBody UpdateHouseRequest request) {
 
         AbstractProperty abstractProperty = propertyService.findAllByTypeAndId(AbstractProperty.Type.HOUSE, id)
@@ -55,7 +54,7 @@ public class UpdatePropertyController {
     }
 
     @PostMapping("/warehouse/{id}")
-    @PreAuthorize("hasPermission(#id,'AbstractProperty','delete')")
+    @PreAuthorize("hasPermission(#id,'AbstractProperty','update')")
     public void updateWarehouse(@PathVariable Long id, @RequestBody UpdateWarehouseRequest request) {
         AbstractProperty abstractProperty = propertyService.findAllByTypeAndId(AbstractProperty.Type.WAREHOUSE, id)
                 .orElseThrow(() -> new ResourceNotFoundException("Property not found"));
@@ -68,7 +67,7 @@ public class UpdatePropertyController {
     }
 
     @PostMapping("/plot/{id}")
-    @PreAuthorize("hasPermission(#id,'AbstractProperty','delete')")
+    @PreAuthorize("hasPermission(#id,'AbstractProperty','update')")
     public void updatePlot(@PathVariable Long id) {
 
         //TODO
