@@ -59,6 +59,10 @@ public class User {
         return authorities;
     }
 
+    public void setAuthorities(Set<Role> authorities) {
+        this.authorities = authorities;
+    }
+
     public boolean isAccountNonExpired() {
         return accountNonExpired;
     }

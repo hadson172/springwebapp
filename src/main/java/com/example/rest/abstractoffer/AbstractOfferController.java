@@ -5,6 +5,7 @@ import com.example.model.offer.AbstractOffer;
 import com.example.rest.response.OfferResponse;
 import com.example.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -36,8 +37,12 @@ public class AbstractOfferController {
     }
 
     @DeleteMapping("/{offerId}")
-    public void deleteOffer(@PathVariable Long offerId) {
-        offerService.findOfferById(offerId).orElseThrow(() -> new ResourceNotFoundException("Offer with given Id doesn't exists."));
+    public void deleteOffer(@PathVariable Long offerId, Authentication authentication) {
+        AbstractOffer offer = offerService.findOfferById(offerId).orElseThrow(() -> new ResourceNotFoundException("Offer with given Id doesn't exists."));
+
+//        if (!offer.getOwner().getUsername().equals(authentication.getName())) {
+//            RestAccessException
+//        }
         offerService.deleteOffer(offerId);
 
     }
