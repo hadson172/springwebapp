@@ -17,10 +17,10 @@ public class MethodSecurityConfiguration extends GlobalMethodSecurityConfigurati
         this.evaluator = evaluator;
     }
 
-    @Override
-    protected MethodSecurityExpressionHandler createExpressionHandler() {
-        DefaultMethodSecurityExpressionHandler expressionHandler = new DefaultMethodSecurityExpressionHandler();
-        expressionHandler.setPermissionEvaluator(evaluator);
-        return expressionHandler;
-    }
+//    @Override
+//    protected MethodSecurityExpressionHandler createExpressionHandler() {
+//        DefaultMethodSecurityExpressionHandler expressionHandler = new DefaultMethodSecurityExpressionHandler();
+//        expressionHandler.setPermissionEvaluator(evaluator);
+//        return expressionHandler;
+//    }
 }

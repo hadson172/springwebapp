@@ -1,5 +1,6 @@
 package com.example.exception;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class ApplicationExceptionHandler {
 
-    @ExceptionHandler(value = ValidationFailedException.class)
+    @ExceptionHandler(ValidationFailedException.class)
     public ResponseEntity<Map<String, List<String>>> handleValidationException(ValidationFailedException ex) {
         Map<String, List<String>> errors = ex.getErrors().getFieldErrors()
                 .stream()
@@ -22,8 +23,8 @@ public class ApplicationExceptionHandler {
 
     }
 
-    @ExceptionHandler(value = ResourceNotFoundException.class)
+    @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException ex) {
-        return ResponseEntity.badRequest().body(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 }
