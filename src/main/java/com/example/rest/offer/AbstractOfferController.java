@@ -1,4 +1,4 @@
-package com.example.rest.abstractoffer;
+package com.example.rest.offer;
 
 import com.example.exception.ResourceNotFoundException;
 import com.example.model.offer.AbstractOffer;

@@ -1,17 +1,29 @@
 package com.example.rest.request;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class MeetingCreateRequest {
 
+    @NotNull
+    @NotBlank
     private String attendeeUsername;
 
+    @NotNull
     private LocalDateTime meetingDateTime;
 
+    @NotNull
+    @NotBlank
     private String city;
 
+    @NotNull
+    @NotBlank
     private String zipCode;
 
+    @NotNull
+    @NotBlank
     private String street;
 
     public MeetingCreateRequest() {

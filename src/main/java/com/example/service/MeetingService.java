@@ -23,8 +23,9 @@ public class MeetingService {
     private UserService userService;
 
     @Autowired
-    public MeetingService(MeetingRepository meetingRepository) {
+    public MeetingService(MeetingRepository meetingRepository, UserService userService) {
         this.meetingRepository = meetingRepository;
+        this.userService = userService;
     }
 
     public Meeting saveMeeting(Meeting meeting) {
@@ -57,6 +58,10 @@ public class MeetingService {
     public MeetingResponse mapToMeetingResponse(Meeting meeting) {
         Address address = meeting.getAddress();
         return new MeetingResponse(meeting.getId(),meeting.getAttendee().getUsername(),meeting.getMeetingDateTime(),address.getCity(),address.getZipCode(),address.getStreet());
+    }
+
+    public boolean isInitiator(Meeting meeting, Authentication authentication) {
+        return meeting.getInitiator().getUsername().equals(authentication.getName());
     }
 
 

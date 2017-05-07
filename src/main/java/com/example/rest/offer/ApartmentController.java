@@ -1,6 +1,5 @@
-package com.example.rest.create;
+package com.example.rest.offer;
 
-import com.example.model.account.User;
 import com.example.model.offer.realestate.Apartment;
 import com.example.rest.request.ApartmentCreateRequest;
 import com.example.rest.utilities.RestUtils;
