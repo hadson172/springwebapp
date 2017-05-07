@@ -27,4 +27,9 @@ public class ApplicationExceptionHandler {
     public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
+
+    @ExceptionHandler(ResourceNotAccessException.class)
+    public ResponseEntity<String> handleResourceNotAccessException(ResourceNotAccessException ex) {
+        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(ex.getMessage());
+    }
 }

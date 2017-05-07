@@ -1,10 +1,12 @@
-package com.example.rest.request;
+package com.example.rest.response;
 
 import java.time.LocalDateTime;
 
-public class MeetingCreateRequest {
+public class MeetingResponse {
 
-    private String attendeeUsername;
+    private Long id;
+
+    private String attendee;
 
     private LocalDateTime meetingDateTime;
 
@@ -14,15 +16,29 @@ public class MeetingCreateRequest {
 
     private String street;
 
-    public MeetingCreateRequest() {
+    public MeetingResponse(Long id, String attendee, LocalDateTime meetingDateTime, String city, String zipCode, String street) {
+        this.id = id;
+        this.attendee = attendee;
+        this.meetingDateTime = meetingDateTime;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.street = street;
     }
 
-    public String getAttendeeUsername() {
-        return attendeeUsername;
+    public Long getId() {
+        return id;
     }
 
-    public void setAttendeeUsername(String attendeeUsername) {
-        this.attendeeUsername = attendeeUsername;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAttendee() {
+        return attendee;
+    }
+
+    public void setAttendee(String attendee) {
+        this.attendee = attendee;
     }
 
     public LocalDateTime getMeetingDateTime() {
