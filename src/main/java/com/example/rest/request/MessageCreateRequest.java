@@ -12,7 +12,7 @@ public class MessageCreateRequest {
     private String receiverUsername;
 
     @NotNull
-    @Size(min = 5,max = 250)
+    @Size(min = 5, max = 250)
     private String content;
 
     public MessageCreateRequest() {

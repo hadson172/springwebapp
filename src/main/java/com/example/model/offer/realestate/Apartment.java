@@ -20,7 +20,7 @@ public class Apartment extends AbstractOffer {
     }
 
     public Apartment(User owner, OfferType offerType, long price, String city, long totalArea, Year buildYear, int numberOfRooms, int floorNumber) {
-        super(owner, RealEstateType.APARTMENT,offerType, price, city, totalArea, buildYear);
+        super(owner, RealEstateType.APARTMENT, offerType, price, city, totalArea, buildYear);
         this.numberOfRooms = numberOfRooms;
         this.floorNumber = floorNumber;
     }
@@ -29,8 +29,16 @@ public class Apartment extends AbstractOffer {
         return numberOfRooms;
     }
 
+    public void setNumberOfRooms(int numberOfRooms) {
+        this.numberOfRooms = numberOfRooms;
+    }
+
     public int getFloorNumber() {
         return floorNumber;
+    }
+
+    public void setFloorNumber(int floorNumber) {
+        this.floorNumber = floorNumber;
     }
 
     @Override
@@ -38,3 +46,4 @@ public class Apartment extends AbstractOffer {
         return new ApartmentOfferResponse(this);
     }
 }
+

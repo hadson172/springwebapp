@@ -8,5 +8,5 @@ import org.springframework.stereotype.Component;
 public class ErrorMsg {
 
     @Value("${userNotFound}")
-    private static String USER_NOT_FOUND;
+    public static String USER_NOT_FOUND;
 }

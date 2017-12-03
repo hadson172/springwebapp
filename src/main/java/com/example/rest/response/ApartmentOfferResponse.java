@@ -2,7 +2,7 @@ package com.example.rest.response;
 
 import com.example.model.offer.realestate.Apartment;
 
-public class ApartmentOfferResponse extends OfferResponse{
+public class ApartmentOfferResponse extends OfferResponse {
 
     private int numberOfRooms;
     private int floorNumber;

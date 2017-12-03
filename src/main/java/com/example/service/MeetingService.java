@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class MeetingService {
@@ -37,27 +36,27 @@ public class MeetingService {
     }
 
     public Meeting MeetingOf(MeetingCreateRequest request, Authentication authentication) {
-        User initiator  = userService.findUserByUsername(authentication.getName()).orElseThrow(() -> new ResourceNotFoundException("User with given username doesn't exists"));
-        User attendee   = userService.findUserByUsername(request.getAttendeeUsername()).orElseThrow(() -> new ResourceNotFoundException("User with given username doesn't exists"));
+        User initiator = userService.findUserByUsername(authentication.getName()).orElseThrow(() -> new ResourceNotFoundException("User with given username doesn't exists"));
+        User attendee = userService.findUserByUsername(request.getAttendeeUsername()).orElseThrow(() -> new ResourceNotFoundException("User with given username doesn't exists"));
 
         if (initiator.getAuthorities().contains(Role.CLIENT) && attendee.getAuthorities().contains(Role.CLIENT)) {
             throw new ResourceNotFoundException("Agency employee with given username doesn't exists");
         }
 
-        Address address = new Address(request.getCity(),request.getZipCode(),request.getStreet());
+        Address address = new Address(request.getCity(), request.getZipCode(), request.getStreet());
 
-        return new Meeting(initiator,attendee,request.getMeetingDateTime(),address);
+        return new Meeting(initiator, attendee, request.getMeetingDateTime(), address);
 
     }
 
     public List<Meeting> getAllMeetings(Authentication authentication) {
         User user = userService.findUserByUsername(authentication.getName()).orElseThrow(() -> new ResourceNotFoundException("User with given username doesn't exists"));
-        return meetingRepository.findAllByInitiatorOrAttendee(user,user);
+        return meetingRepository.findAllByInitiatorOrAttendee(user, user);
     }
 
     public MeetingResponse mapToMeetingResponse(Meeting meeting) {
         Address address = meeting.getAddress();
-        return new MeetingResponse(meeting.getId(),meeting.getAttendee().getUsername(),meeting.getMeetingDateTime(),address.getCity(),address.getZipCode(),address.getStreet());
+        return new MeetingResponse(meeting.getId(), meeting.getAttendee().getUsername(), meeting.getMeetingDateTime(), address.getCity(), address.getZipCode(), address.getStreet());
     }
 
     public boolean isInitiator(Meeting meeting, Authentication authentication) {

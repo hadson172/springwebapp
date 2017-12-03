@@ -8,12 +8,13 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.Year;
 import java.util.List;
 import java.util.Optional;
 
-public interface OfferRepository extends JpaRepository<AbstractOffer,Long>,JpaSpecificationExecutor<AbstractOffer> {
+public interface OfferRepository extends JpaRepository<AbstractOffer, Long>, JpaSpecificationExecutor<AbstractOffer> {
 
 
     @Query("SELECT o FROM AbstractOffer o WHERE " +
@@ -39,5 +40,8 @@ public interface OfferRepository extends JpaRepository<AbstractOffer,Long>,JpaSp
 
 
     boolean deleteAbstractOfferById(Long id);
+
+    @Transactional
+    boolean deleteAbstractOfferByIdAndOwnerUsername(Long id, String username);
 
 }

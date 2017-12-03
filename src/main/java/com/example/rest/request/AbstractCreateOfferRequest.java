@@ -1,15 +1,9 @@
 package com.example.rest.request;
 
-import com.example.model.account.User;
 import com.example.model.offer.OfferType;
-import com.example.model.offer.RealEstateType;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 import java.time.Year;
 import java.util.Map;
 
@@ -33,7 +27,7 @@ public abstract class AbstractCreateOfferRequest {
     private Year buildYear;
 
     @NotNull
-    private Map<String,String> additionalProperties;
+    private Map<String, String> additionalProperties;
 
 
     public AbstractCreateOfferRequest() {
@@ -55,7 +49,6 @@ public abstract class AbstractCreateOfferRequest {
     public Year getBuildYear() {
         return buildYear;
     }
-
 
 
     public OfferType getOfferType() {

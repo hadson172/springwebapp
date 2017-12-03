@@ -27,7 +27,7 @@ public abstract class OfferResponse {
     private long totalArea;
     private Year buildYear;
 
-    private Map<String,String> additionalProperties;
+    private Map<String, String> additionalProperties;
 
 
     public OfferResponse(AbstractOffer offer) {

@@ -76,18 +76,18 @@ public class SpecificationBuilder {
 
     public Specification<AbstractOffer> buildSpecification() {
 
-        return (Root<AbstractOffer> root,CriteriaQuery<?> query,CriteriaBuilder builder) ->{
+        return (Root<AbstractOffer> root, CriteriaQuery<?> query, CriteriaBuilder builder) -> {
 
             List<Predicate> predicates = new ArrayList<>();
 
-            Optional.ofNullable(this.realEstateType).ifPresent(v -> predicates.add(builder.equal(root.get("realEstateType"),v)));
-            Optional.ofNullable(this.offerType).ifPresent(v -> predicates.add(builder.equal(root.get("offerType"),v)));
-            Optional.ofNullable(this.minPrice).ifPresent(v -> predicates.add(builder.greaterThanOrEqualTo(root.get("minPrice"),v)));
-            Optional.ofNullable(this.maxPrice).ifPresent(v -> predicates.add(builder.lessThanOrEqualTo(root.get("maxPrice"),v)));
-            Optional.ofNullable(this.city).ifPresent(v -> predicates.add(builder.equal(root.get("city"),v)));
-            Optional.ofNullable(this.totalArea).ifPresent(v -> predicates.add(builder.greaterThanOrEqualTo(root.get("totalArea"),v)));
-            Optional.ofNullable(this.buildYear).ifPresent(v -> predicates.add(builder.equal(root.get("buildYear"),v)));
-            Optional.ofNullable(this.creationTime).ifPresent(v -> predicates.add(builder.equal(root.get("creationTime"),v)));
+            Optional.ofNullable(this.realEstateType).ifPresent(v -> predicates.add(builder.equal(root.get("realEstateType"), v)));
+            Optional.ofNullable(this.offerType).ifPresent(v -> predicates.add(builder.equal(root.get("offerType"), v)));
+            Optional.ofNullable(this.minPrice).ifPresent(v -> predicates.add(builder.greaterThanOrEqualTo(root.get("price"), v)));
+            Optional.ofNullable(this.maxPrice).ifPresent(v -> predicates.add(builder.lessThanOrEqualTo(root.get("price"), v)));
+            Optional.ofNullable(this.city).ifPresent(v -> predicates.add(builder.equal(root.get("city"), v)));
+            Optional.ofNullable(this.totalArea).ifPresent(v -> predicates.add(builder.greaterThanOrEqualTo(root.get("totalArea"), v)));
+            Optional.ofNullable(this.buildYear).ifPresent(v -> predicates.add(builder.equal(root.get("buildYear"), v)));
+            Optional.ofNullable(this.creationTime).ifPresent(v -> predicates.add(builder.equal(root.get("creationTime"), v)));
 
             return builder.and(predicates.toArray(new Predicate[predicates.size()]));
         };

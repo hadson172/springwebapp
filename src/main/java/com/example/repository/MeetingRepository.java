@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface MeetingRepository extends JpaRepository<Meeting,Long> {
+public interface MeetingRepository extends JpaRepository<Meeting, Long> {
 
-    List<Meeting> findAllByInitiatorOrAttendee(User initiator,User attendee);
+    List<Meeting> findAllByInitiatorOrAttendee(User initiator, User attendee);
+
     Optional<Meeting> findMeetingById(Long id);
 }

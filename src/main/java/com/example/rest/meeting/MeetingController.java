@@ -40,7 +40,7 @@ public class MeetingController {
 
     @PostMapping
     public void createMeeting(@RequestBody MeetingCreateRequest request, Authentication authentication) {
-        Meeting meeting = meetingService.MeetingOf(request,authentication);
+        Meeting meeting = meetingService.MeetingOf(request, authentication);
         meetingService.saveMeeting(meeting);
     }
 

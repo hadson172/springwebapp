@@ -5,7 +5,10 @@ import com.example.model.account.User;
 import com.example.model.account.role.Role;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.EnumSet;
 import java.util.Set;

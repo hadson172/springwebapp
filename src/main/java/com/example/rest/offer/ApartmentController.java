@@ -1,5 +1,6 @@
 package com.example.rest.offer;
 
+import com.example.exception.ResourceNotFoundException;
 import com.example.model.offer.realestate.Apartment;
 import com.example.rest.request.ApartmentCreateRequest;
 import com.example.rest.utilities.RestUtils;
@@ -34,9 +35,16 @@ public class ApartmentController {
         RestUtils.hasErrors(errors);
 
         userService.getAuthenticatedUser(authentication).ifPresent(user -> {
-            Apartment apartment = new Apartment(user,request.getOfferType(),request.getPrice(),request.getCity(),request.getTotalArea(),request.getBuildYear(),request.getNumberOfRooms(),request.getFloorNumber());
+            Apartment apartment = new Apartment(user, request.getOfferType(), request.getPrice(), request.getCity(), request.getTotalArea(), request.getBuildYear(), request.getNumberOfRooms(), request.getFloorNumber());
             offerService.save(apartment);
         });
 
     }
+
+    @PutMapping("/{offerId}")
+    public void updateApartmentOffer(@RequestBody ApartmentCreateRequest request, @PathVariable Long offerId) {
+        Apartment offer = offerService.findApartmentOfferById(offerId).orElseThrow(() -> new ResourceNotFoundException("Apartment offer with given id doesn't exists"));
+        offerService.updateApartmentOffer(offer, request);
+    }
+
 }

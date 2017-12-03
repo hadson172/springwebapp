@@ -14,14 +14,14 @@ public class Message {
     private Long id;
 
     @ManyToOne
-    private User sender ;
+    private User sender;
 
     @ManyToOne
     private User receiver;
 
     private LocalDateTime sendDate;
 
-    @Length(min = 10,max = 250)
+    @Length(min = 10, max = 250)
     private String content;
 
 

@@ -1,7 +1,6 @@
 package com.example.model.offer;
 
 
-
 public enum RealEstateType {
     APARTMENT,
     HOUSE,

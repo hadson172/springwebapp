@@ -5,7 +5,6 @@ import com.example.model.offer.AbstractOffer;
 import com.example.rest.response.OfferResponse;
 import com.example.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,11 +37,7 @@ public class AbstractOfferController {
     }
 
     @DeleteMapping("/{offerId}")
-    @PreAuthorize("#offerService.isOwner(offerId,authentication)")
     public void deleteOffer(@PathVariable Long offerId, Authentication authentication) {
-        offerService.findOfferById(offerId).orElseThrow(() -> new ResourceNotFoundException("Offer with given Id doesn't exists."));
-        offerService.deleteOffer(offerId);
-
+        offerService.deleteOfferIfOwner(offerId, authentication);
     }
-
 }

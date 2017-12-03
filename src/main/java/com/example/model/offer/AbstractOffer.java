@@ -2,8 +2,6 @@ package com.example.model.offer;
 
 import com.example.model.account.User;
 import com.example.rest.response.OfferResponse;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -29,7 +27,7 @@ public abstract class AbstractOffer {
     private OfferType offerType;
 
     @ElementCollection
-    private Map<String,String> additionalProperties;
+    private Map<String, String> additionalProperties;
 
     private boolean confirmed;
 
@@ -70,40 +68,72 @@ public abstract class AbstractOffer {
         return owner;
     }
 
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
     public OfferType getOfferType() {
         return offerType;
+    }
+
+    public void setOfferType(OfferType offerType) {
+        this.offerType = offerType;
     }
 
     public RealEstateType getRealEstateType() {
         return realEstateType;
     }
 
+    public void setRealEstateType(RealEstateType realEstateType) {
+        this.realEstateType = realEstateType;
+    }
+
     public Map<String, String> getAdditionalProperties() {
         return additionalProperties;
+    }
+
+    public void setAdditionalProperties(Map<String, String> additionalProperties) {
+        this.additionalProperties = additionalProperties;
     }
 
     public long getPrice() {
         return price;
     }
 
+    public void setPrice(long price) {
+        this.price = price;
+    }
+
     public String getCity() {
         return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public long getTotalArea() {
         return totalArea;
     }
 
+    public void setTotalArea(long totalArea) {
+        this.totalArea = totalArea;
+    }
+
     public Year getBuildYear() {
         return buildYear;
+    }
+
+    public void setBuildYear(Year buildYear) {
+        this.buildYear = buildYear;
     }
 
     public LocalDateTime getCreationTime() {
         return creationTime;
     }
 
-    public void setAdditionalProperties(Map<String, String> additionalProperties) {
-        this.additionalProperties = additionalProperties;
+    public void setCreationTime(LocalDateTime creationTime) {
+        this.creationTime = creationTime;
     }
 
     public boolean isConfirmed() {
